@@ -1,0 +1,71 @@
+pygame :
+ 
+    Pygame is a set of Python modules that allow us to create games and multimedia applications
+    Pygame is python library for game development.
+    
+Initialization and Modules:
+
+    PyGame consists of various modules that provide abstract access to specific hardware components and uniform methods
+    to interact with them.
+    Initialization of PyGame is done using the pygame.init() function, which initializes all the included modules.
+
+Displays and Surfaces:
+
+    PyGame uses a user-created display
+    which can be a window or full screen,
+    to present the game visuals.
+    The display is created using the .set_mode() method, which returns a Surface representing the visible part of the window. Surface objects define rectangular areas on which you can draw graphics.
+
+Images and Rects:
+
+    PyGame allows loading and manipulation of images in different formats using the image module.
+    Images are loaded into Surface objects, which can be displayed and modified.
+    The Rect class is used to represent rectangles and is heavily used in PyGame for various objects, including images, windows, players, and enemies.
+
+
+Setting Up the Game Loop:
+
+    Every game from Pong to Fortnite uses a game loop to control gameplay.
+
+    The game loop does four very important things:
+
+        Processes user input
+        Updates the state of all game objects
+        Updates the display and audio output
+        Maintains the speed of the game
+        
+    Every cycle of the game loop is called a frame,
+    and the quicker you can do things each cycle,
+    the faster your game will run.
+    Frames continue to occur until some condition to exit the game is met.
+
+
+    The first thing the game loop does is process user input to allow the player to move around the screen.
+    Therefore, you need some way to capture and process a variety of input.
+    
+    You do this using the pygame event system.
+    
+Processing Events :
+
+    Key presses, mouse movements, and even joystick movements are some of the ways in which a user can provide input.
+    All user input results in an event being generated.
+    
+    Events can happen at any time and often (but not always) originate outside the program.
+    
+    All events in pygame are placed in the event queue, which can then be accessed and manipulated.
+    Dealing with events is referred to as handling them, and the code to do so is called an event handler.
+    Every event in pygame has an event type associated with it. For your game, the event types you’ll focus on are keypresses and window closure.
+    Keypress events have the event type KEYDOWN,
+    and the window closure event has the type QUIT.
+    Different event types may also have other data associated with them.
+    
+    For example, the KEYDOWN event type also has a variable called key to indicate which key was pressed.
+    You access the list of all active events in the queue by calling pygame.event.get().
+    
+    You then loop through this list, inspect each event type, and respond accordingly:
+
+
+Drawing on the Screen :
+
+    screen.fill() to fill the background
+    pygame.draw.circle() to draw a circle

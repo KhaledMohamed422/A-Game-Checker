@@ -1,0 +1,7 @@
+
+A player cannot move into a square that is occupied by one of their own pieces.
+A player cannot jump over their own pieces.
+A player cannot jump over an opponent's piece that is not captured.
+A player cannot capture their own piece.
+A player must capture an opponent's piece if it is in an adjacent diagonal square.
+A player cannot pass over an opponent's piece that is in an adjacent diagonal square.
