@@ -27,21 +27,6 @@ class Game:
 						black_piece += 1
 		return red_piece, black_piece
 
-	def is_game_over(self, board):
-     
-		""" 
-		method calls the check_piece() method to get the current piece count for each color.
-       If one color has no pieces left, the other color is declared the winner
-       and the method returns True.
-       Otherwise, the method returns False.
-    	"""
-		red_piece, black_piece = self.check_piece(board)
-		if red_piece == 0 or black_piece == 0:
-			self.winner = "Red" if red_piece > black_piece else "Black"
-			return True
-		else:
-			return False
-
 	def check_jump(self, board):
 		piece = None
 		for tile in board.tile_list:
@@ -56,6 +41,31 @@ class Game:
 			board.selected_piece = piece
 			board.handle_click(piece.pos)
 		return board.is_jump
+
+
+	def check_moves_available(self, board):
+
+		for tile in board.tile_list:
+			if tile.occupying_piece is not None and tile.occupying_piece.color == board.turn:
+				if len(tile.occupying_piece.valid_moves()) > 0 or len(tile.occupying_piece.valid_jumps()) > 0:
+					return True
+		return False
+
+
+	def is_game_over(self, board):
+        
+		red_piece, black_piece = self.check_piece(board)
+
+		if red_piece == 0 or black_piece == 0:
+			self.winner = "Red" if red_piece > black_piece else "Black"
+			return True
+		elif not self.check_moves_available(board):
+			self.winner = "Red" if board.turn == "black" else "Black"
+			return True
+		else:
+			return False
+
+		
 
 	def message(self):
 		return f"{self.winner} Wins"

@@ -1,5 +1,5 @@
 import pygame
-from Board import Board
+from Board import *
 from Game import Game
 
 # A International Checker Game
@@ -16,7 +16,7 @@ class Checkers:
 
 
 	def draw(self, board):
-     
+		# the function who update the Screen
 		board.draw(self.screen)
 		pygame.display.update()
 
@@ -32,6 +32,8 @@ class Checkers:
 		# Load the move sound effect
 		move_sound = pygame.mixer.Sound("sounds/move_sound.wav")
 
+
+		# The game loop 
 		while self.running:
       
 			# We want to handle all states in each frame 
@@ -51,6 +53,7 @@ class Checkers:
 							move_sound.play()
 						
 				else:
+						# Add massage in the end of the Game (lose win)
 						message = game.message()
 						font = pygame.font.Font(None, 36)
 						text = font.render(message, True, (255, 255, 255))
@@ -82,7 +85,7 @@ if __name__ == "__main__":
     
 	window_size = (750, 750)
 	screen = pygame.display.set_mode(window_size)
-	pygame.display.set_caption("Checkers")
+	pygame.display.set_caption("Checkers Player Vs Player Game")
 
 	checkers = Checkers(screen)
 	checkers.main(window_size[0], window_size[1])
